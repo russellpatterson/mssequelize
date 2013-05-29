@@ -38,7 +38,8 @@
     "dottie": "0.0.6-1",
     "toposort-class": "0.1.4",
     "generic-pool": "2.0.3",
-    "promise": "~3.0.0"
+    "promise": "~3.0.0",
+    "tedious": "~0.1.4"
   },
   "devDependencies": {
     "jasmine-node": "1.5.0",
@@ -59,6 +60,7 @@
   "scripts": {
     "test": "npm run test-jasmine && npm run test-buster",
     "test-jasmine": "jasmine-node spec-jasmine/",
+    "test-jasmine-mssql": "jasmine-node spec-jasmine/mssql/",
     "test-buster": "npm run test-buster-mysql && npm run test-buster-postgres && npm run test-buster-postgres-native && npm run test-buster-sqlite",
     "test-buster-travis": "buster-test",
     "test-buster-mysql": "DIALECT=mysql buster-test",
