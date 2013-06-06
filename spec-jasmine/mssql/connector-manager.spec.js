@@ -1,6 +1,6 @@
 var config    = require("../config/config")
   , Sequelize = require("../../index")
-  , sequelize = new Sequelize(config.mssql.database, config.mssql.username, config.mssql.password, { pool: config.mssql.pool, logging: false, host: config.mssql.host, port: config.mssql.port })
+  , sequelize = new Sequelize(config.mssql.database, config.mssql.username, config.mssql.password, { pool: config.mssql.pool, logging: false, host: config.mssql.host, port: config.mssql.port , dialect: 'mssql'})
   , Helpers   = new (require("../config/helpers"))(sequelize)
 
 describe('ConnectorManager', function() {

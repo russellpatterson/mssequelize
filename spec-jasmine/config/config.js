@@ -25,9 +25,9 @@ module.exports = {
 
   mssql: {
     username: "root",
-    password: null,
+    password: "root",
     database: 'sequelize_test',
-    host: '10.0.26.47',
+    host: '127.0.0.1',
     port: 1433,
     pool: { maxConnections: 5, maxIdleTime: 30}
   }
