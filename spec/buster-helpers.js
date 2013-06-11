@@ -32,6 +32,7 @@ var BusterHelpers = module.exports = {
     options.logging = (options.hasOwnProperty('logging') ? options.logging : false)
 
     var sequelizeOptions = {
+      host: config[options.dialect].host,
       logging: options.logging,
       dialect: options.dialect,
       port:    config[options.dialect].port

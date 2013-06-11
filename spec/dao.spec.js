@@ -260,6 +260,8 @@ describe(Helpers.getTestDialectTeaser("DAO"), function() {
 
       this.User.create({ username: 'John Doe' }).done(function (err, originalUser) {
         self.User.find(originalUser.id).done(function (err, updater) {
+          console.log(err)
+
           updater.updateAttributes({ username: 'Doe John' }).done(function () {
             // We used a different reference when calling updateAttributes, so originalUser is now out of sync
             expect(originalUser.username).toEqual('John Doe')

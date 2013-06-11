@@ -165,10 +165,12 @@ describe(Helpers.getTestDialectTeaser("DAOFactory"), function() {
           User.create({ username: 'foo' }).error(function(err) {
             expect(err).toBeDefined()
 
+
             Helpers.checkMatchForDialects(dialect, err.message, {
               sqlite: /.*SQLITE_CONSTRAINT.*/,
               mysql: /.*Duplicate\ entry.*/,
-              postgres: /.*duplicate\ key\ value.*/
+              postgres: /.*duplicate\ key\ value.*/,
+              mssql: /.*UNIQUE KEY constraint.*/
             })
 
             done()
@@ -190,17 +192,18 @@ describe(Helpers.getTestDialectTeaser("DAOFactory"), function() {
           Helpers.checkMatchForDialects(dialect, err.message, {
             sqlite: /.*SQLITE_CONSTRAINT.*/,
             mysql: "Column 'smth' cannot be null",
-            postgres: /.*column "smth" violates not-null.*/
+            postgres: /.*column "smth" violates not-null.*/,
+            mssql: /.*Cannot insert the value NULL.*/
           })
 
           User.create({ username: 'foo', smth: 'foo' }).success(function() {
             User.create({ username: 'foo', smth: 'bar' }).error(function(err) {
               expect(err).toBeDefined()
-
               Helpers.checkMatchForDialects(dialect, err.message, {
                 sqlite: /.*SQLITE_CONSTRAINT.*/,
                 mysql: "Duplicate entry 'foo' for key 'username'",
-                postgres: /.*duplicate key value violates unique constraint.*/
+                postgres: /.*duplicate key value violates unique constraint.*/,
+                mssql: /.*UNIQUE KEY constraint.*/
               })
 
               done()

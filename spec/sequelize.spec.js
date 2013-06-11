@@ -5,7 +5,7 @@ if(typeof require === 'function') {
 }
 
 var qq = function(str) {
-  if (dialect == 'postgres' || dialect == 'sqlite') {
+  if (dialect == 'postgres' || dialect == 'sqlite' || dialect == 'mssql') {
     return '"' + str + '"'
   } else if (dialect == 'mysql') {
     return '`' + str + '`'

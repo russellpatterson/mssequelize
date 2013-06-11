@@ -4,6 +4,6 @@ config["node tests"] = {
   environment: "node",
   rootPath: "../",
   tests: [
-    "spec/**/*.spec.js"
+    "spec/**/dao.spec.js"
   ]
 }
