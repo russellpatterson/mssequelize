@@ -67,7 +67,7 @@
     "test-buster-postgres": "DIALECT=postgres buster-test",
     "test-buster-postgres-native": "DIALECT=postgres-native buster-test",
     "test-buster-sqlite": "DIALECT=sqlite buster-test",
-    "test-buster-mssql": "DIALECT=mssql buster-test \"reload\"",
+    "test-buster-mssql": "DIALECT=mssql buster-test",
     "docs": "node_modules/.bin/yuidoc . -o docs"
   },
   "bin": {
