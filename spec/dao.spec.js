@@ -312,7 +312,7 @@ describe(Helpers.getTestDialectTeaser("DAO"), function() {
           Page.create({ content: 'om nom nom' }).success(function(page) {
             book.setPages([ page ]).success(function() {
               Book.find({
-                where: (dialect === 'postgres' ? '"Books"."id"=' : '`Books`.`id`=') + book.id,
+                where: (dialect === 'postgres' || dialect === 'mssql' ? '"Books"."id"=' : '`Books`.`id`=') + book.id,
                 include: [Page]
               }).success(function(leBook) {
                 page.updateAttributes({ content: 'something totally different' }).success(function(page) {
@@ -671,7 +671,7 @@ describe(Helpers.getTestDialectTeaser("DAO"), function() {
             expect(download.finishedAt).toBeFalsy()
 
             Download.all({
-              where: (dialect === 'postgres' ? '"finishedAt" IS NULL' : "`finishedAt` IS NULL")
+              where: (dialect === 'postgres' || dialect === 'mssql' ? '"finishedAt" IS NULL' : "`finishedAt` IS NULL")
             }).success(function(downloads) {
               downloads.forEach(function(download) {
                 expect(download.startedAt instanceof Date).toBeTrue()
